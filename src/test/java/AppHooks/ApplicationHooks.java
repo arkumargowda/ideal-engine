@@ -1,4 +1,4 @@
-package AppHooks;
+package apphooks;
 
 import java.util.Properties;
 
@@ -7,12 +7,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import com.qa.factory.DriverFactory;
-import com.qa.util.ConfigReader;
-
+import factory.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import utils.ConfigReader;
 
 public class ApplicationHooks {
 	

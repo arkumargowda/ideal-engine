@@ -9,13 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-import com.pages.FiltersPage;
-import com.qa.factory.DriverFactory;
-import com.qa.util.CompareBigNumers;
-import com.qa.util.JSUtils;
+
+import factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.FiltersPage;
+import utils.CompareBigNumers;
+import utils.JSUtils;
 
 
 public class FilterTests {

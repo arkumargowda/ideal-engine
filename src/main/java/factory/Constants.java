@@ -1,4 +1,4 @@
-package com.qa.factory;
+package factory;
 
 public class Constants {
 
