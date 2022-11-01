@@ -8,8 +8,6 @@ Then <count> rows should be dispalyed
 Examples:
 	|count  |
 	|100		|
-	|50			|
-	|20			|
 
 Scenario: Frontend Task2 - Verify the Market Cap and Price filters
 Given open the url "https://coinmarketcap.com"
