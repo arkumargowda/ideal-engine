@@ -1,12 +1,15 @@
 package stepdefinitions;
 
 import java.math.BigInteger;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -27,10 +30,10 @@ public class FilterTests {
 	@Given("open the url {string}")
 	public void open_the_url(String url) { 
 		driver.get(url);
-		if(driver.findElements(filtersPage.gotItButton).size()==1)
-			driver.findElement(filtersPage.gotItButton).click();
-		if(driver.findElements(filtersPage.closeCookiesPopUp).size()==1)
-			driver.findElement(filtersPage.closeCookiesPopUp).click();		
+		new WebDriverWait(driver, Duration.ofSeconds(10))
+		.until(ExpectedConditions.elementToBeClickable(filtersPage.infoCloseButton)).click();	
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+			.until(ExpectedConditions.elementToBeClickable(filtersPage.closeCookiesPopUp)).click();	
 	}
 	
 	@When("user selects show rows dropdown to value to {int}")

@@ -18,7 +18,7 @@ public class FiltersPage {
 	public By priceValButton = By.xpath("//button[text()='$101 - $1,000']");
 	public By applyFilterButton = By.xpath("//button[text()='Apply Filter']");
 	public By showResultsButton = By.xpath("//button[text()='Show results']");
-	public By gotItButton = By.xpath("//button[contains(text(),'Got it')]");
+	public By infoCloseButton = By.xpath("//div[@class='gv-close']");
 	public By closeCookiesPopUp = By.className("cmc-cookie-policy-banner__close");
 
 	public By nextPageButton = By.xpath("(//a[@aria-label='Next page'])[2]");
