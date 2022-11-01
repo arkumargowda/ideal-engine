@@ -13,7 +13,7 @@ Project for UI and API automated tests developed using Selenium, RestAssured and
 
 ## How to run?
 * Clone this project to any machine where java, maven and chrome browsers are installed.
-* Navigate to the cloned project folder in command line.
+* Navigate to the cloned project folder ```ideal-engine``` in command line.
 * Type the command ``` mvn clean test ``` and hit enter.
 
 ## Reports
