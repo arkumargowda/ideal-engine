@@ -21,5 +21,5 @@ Link to test execution report can be found in the logs at the end. Copy the link
 
 ## <span color="red">Note</span>:
 ```diff 
--Technical doc validation test will fail as 'minimal' tag which is not present in the response.
+-Technical doc validation test will fail as 'minimal' tag is not present in the response.
 ```
