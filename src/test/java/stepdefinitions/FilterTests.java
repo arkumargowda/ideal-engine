@@ -21,7 +21,9 @@ import pages.FiltersPage;
 import utils.CompareBigNumers;
 import utils.JSUtils;
 
-
+/*
+ * This is a stepdefinition file for Filter tests
+ */
 public class FilterTests {
 	
 	private FiltersPage filtersPage = new FiltersPage(DriverFactory.getDriver());
@@ -30,9 +32,13 @@ public class FilterTests {
 	@Given("open the url {string}")
 	public void open_the_url(String url) { 
 		driver.get(url);
+		
+		//code to close the info box
 		new WebDriverWait(driver, Duration.ofSeconds(10))
 		.until(ExpectedConditions.elementToBeClickable(filtersPage.infoCloseButton)).click();	
-			new WebDriverWait(driver, Duration.ofSeconds(10))
+		
+		//code to close the cookies footer
+		new WebDriverWait(driver, Duration.ofSeconds(10))
 			.until(ExpectedConditions.elementToBeClickable(filtersPage.closeCookiesPopUp)).click();	
 	}
 	
@@ -41,7 +47,6 @@ public class FilterTests {
 		JSUtils.scrollToView(driver, filtersPage.rowsCountFilter);
 		driver.findElement(filtersPage.rowsCountFilter).click();
 		driver.findElement(filtersPage.getRowsDropdownOption(rowsCount)).click();
-		JSUtils.waitForPageLoad(driver);
 	}
 	
 
@@ -56,12 +61,8 @@ public class FilterTests {
 	public void click_on_filters_button() {
 		JSUtils.scrollToView(driver, filtersPage.filtersButton);
 		driver.findElement(filtersPage.filtersButton).click();
-		JSUtils.waitForPageLoad(driver);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		new WebDriverWait(driver, Duration.ofSeconds(10))
+		.until(ExpectedConditions.visibilityOfElementLocated(filtersPage.addFilter));
 		Assert.assertTrue(driver.findElement(filtersPage.addFilter).isDisplayed());
 	}
 
@@ -82,15 +83,18 @@ public class FilterTests {
 		driver.findElement(filtersPage.showResultsButton).click();
 		try {
 			Thread.sleep(2000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 	
 	@Then("records displayed as per the filters applied")
 	public void records_displayed_as_per_the_filters_applied() {
 		SoftAssert sa = new SoftAssert();
+		
+		//code to iterate over pagination and capture all the rows
 		List<WebElement> rows = driver.findElements(filtersPage.rowsDisplayed);
 		while (driver.findElement(filtersPage.nextPageButton).getAttribute("aria-disabled").equals("false")) {
 			JSUtils.scrollToView(driver, filtersPage.nextPageButton);
@@ -98,6 +102,7 @@ public class FilterTests {
 			rows.addAll(driver.findElements(filtersPage.rowsDisplayed));
 		}
 
+		
 		Map<Object, Object> priceMap = rows.stream()
 				.collect(Collectors.toMap(ele -> ele.findElement(By.xpath("./td[3]")).getText(),
 						ele -> ele.findElement(By.xpath("./td[4]")).getText().substring(1)));
@@ -106,17 +111,20 @@ public class FilterTests {
 				.collect(Collectors.toMap(ele -> ele.findElement(By.xpath("./td[3]")).getText(),
 						ele -> ele.findElement(By.xpath("./td[8]")).getText().substring(1)));
 
+		//code for price validation
 		priceMap.forEach((a, b) -> {
-			
 			float price = Float.parseFloat(b.toString());
 			sa.assertTrue(price >= 101 && price <= 1000, "Price of " + a + " is within selected price range");
 		});
+		
+		
+		//code for marketCap validation
 		marketCapMap.forEach((a, b) -> {
 
-			BigInteger i = BigInteger.valueOf(Long.valueOf(b.toString().replaceAll(",", "").toString()));
-			BigInteger j = BigInteger.valueOf(1000000000L);
-			BigInteger k = BigInteger.valueOf(10000000000L);
-			sa.assertTrue(CompareBigNumers.greaterOrEqual(i, j) && CompareBigNumers.lesserOrEqual(i, k),
+			BigInteger marketCap = BigInteger.valueOf(Long.valueOf(b.toString().replaceAll(",", "").toString()));
+			BigInteger min = BigInteger.valueOf(1000000000L);
+			BigInteger max = BigInteger.valueOf(10000000000L);
+			sa.assertTrue(CompareBigNumers.greaterOrEqual(marketCap, min) && CompareBigNumers.lesserOrEqual(marketCap, max),
 					"Market Cap of " + a + " is within selected market Cap range");
 			sa.assertAll();
 

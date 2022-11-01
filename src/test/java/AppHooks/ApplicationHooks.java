@@ -10,7 +10,9 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import utils.ConfigReader;
-
+/*
+ * This class contains application hooks to execute before and after a test
+ */
 public class ApplicationHooks {
 	
 	private DriverFactory  driverFactory;
@@ -18,6 +20,9 @@ public class ApplicationHooks {
 	private ConfigReader configReader;
 	public static Properties prop;
 	
+	/*
+	 * This hook will initialize the driver based on the browser mentioned in the config properties file
+	 */
 	@Before("@UITests")
 	public void getProperty() {
 		configReader = new ConfigReader();
@@ -27,6 +32,9 @@ public class ApplicationHooks {
 		driver = driverFactory.init_driver(browserName);
 	}
 	
+	/*
+	 * This hook will take screenshot if the test has failed. Quits the browser. 
+	 */
 	@After("@UITests")
 	public void quitBrowser(Scenario scenario) {
 		if(scenario.isFailed()) {

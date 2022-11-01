@@ -3,9 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
+/**
+ * 
+ * This class contains webelements present on the filter page
+ * 
+ *
+ */
 public class FiltersPage {
-
+	
 	public WebDriver driver;
 	public By rowsCountFilter = By.xpath("//div[contains(@class, 'table-control-page-sizer')]/div");
 	public By rowsValue = By.xpath("//button[contains(text(),'100')]");
@@ -20,7 +25,6 @@ public class FiltersPage {
 	public By showResultsButton = By.xpath("//button[text()='Show results']");
 	public By infoCloseButton = By.xpath("//div[@class='gv-close']");
 	public By closeCookiesPopUp = By.className("cmc-cookie-policy-banner__close");
-
 	public By nextPageButton = By.xpath("(//a[@aria-label='Next page'])[2]");
 
 	public FiltersPage(WebDriver driver) {
@@ -28,6 +32,11 @@ public class FiltersPage {
 
 	}
 
+	/**
+	 * 
+	 * @param count
+	 * @return return the dropdown option having value 'count' as webelement
+	 */
 	public By getRowsDropdownOption(int count) {
 		return By.xpath("//button[contains(text(),'" + count + "')]");
 	}

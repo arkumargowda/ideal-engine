@@ -5,6 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+
+/**
+ * 
+ * This is a config reader class for reading config properties
+ *
+ */
 public class ConfigReader {
 	
 	private Properties prop;

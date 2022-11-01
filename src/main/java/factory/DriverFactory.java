@@ -3,13 +3,16 @@ package factory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+/**
+ * 
+ * This class has methods related to webdriver initialization
+ *
+ */
 public class DriverFactory {
 	
 	public WebDriver driver;
-	
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 	
 	/***
@@ -30,7 +33,7 @@ public class DriverFactory {
 			tlDriver.set(new FirefoxDriver());
 		}
 		else {
-			System.out.println("Please pass the correct browser value: "+browser);
+			System.err.println("Please pass the correct browser value: "+browser);
 		}
 		
 		getDriver().manage().deleteAllCookies();

@@ -2,29 +2,23 @@ package stepdefinitions.apiTests;
 
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
-
 import org.testng.Assert;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
-public class TagVerificationTest {
+public class TagVerificationTest extends APITestPrequisite {
 
 	Response response;
 
 	
 	@Given("Retrieve the first ten currencies from the cryptocurrency\\/info call")
 	public void retrieve_the_first_ten_currencies_from_the_cryptocurrency_info_call() {
-		RestAssured.baseURI="https://pro-api.coinmarketcap.com";
-		response = RestAssured.given()
-		.header("X-CMC_PRO_API_KEY","696f7d0e-c3e6-47ac-8135-d3852c39e2fb")
+		response = getRequestSpecification()
 		.param("id", "1,2,3,4,5,6,7,8,9,10")
 		.get("/v2/cryptocurrency/info");
 	}
@@ -42,6 +36,9 @@ public class TagVerificationTest {
 
 	@Then("Verify that correct cryptocurrencies have been printed out")
 	public void verify_that_correct_cryptocurrencies_have_been_printed_out() {
+		
+		//Symbol of crypto currencies returned in the response are validated against a properties 
+		//file having the correct symbols for first 10 crypto currencies
 		FileInputStream fis;
 		Properties prop = null;
 		try {

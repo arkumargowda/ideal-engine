@@ -3,18 +3,15 @@ package stepdefinitions.apiTests;
 import org.hamcrest.Matchers;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 
-public class TechDocTest {
+public class TechDocTest extends APITestPrequisite {
 
 	ValidatableResponse response;
 	
 	@Given("Retrieve the Ethereum technical documentation from the cryptocurrency\\/info call")
 	public void retrieve_the_ethereum_technical_documentation_from_the_cryptocurrency_info_call() {
-		RestAssured.baseURI="https://pro-api.coinmarketcap.com";
-		response = RestAssured.given()
-		.header("X-CMC_PRO_API_KEY","696f7d0e-c3e6-47ac-8135-d3852c39e2fb")
+		response = getRequestSpecification()
 		.param("id", 1027)
 		.get("/v2/cryptocurrency/info").then();
 	}
@@ -34,9 +31,9 @@ public class TechDocTest {
 	   response.assertThat().body("data.1027.symbol", Matchers.is("ETH"));
 	}
 
-	@Then("Confirm that the date added is")
-	public void confirm_that_the_date_added_is() {
-	   response.assertThat().body("data.1027.date_added", Matchers.is("2015-08-07T00:00:00.000Z"));
+	@Then("Confirm that the date added is as expected")
+	public void confirm_that_the_date_added_is_as_expected() {
+		   response.assertThat().body("data.1027.date_added", Matchers.is("2015-08-07T00:00:00.000Z"));
 	}
 
 	@Then("Confirm that the currency has the mineable tag associate with it")

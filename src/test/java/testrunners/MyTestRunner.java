@@ -5,6 +5,9 @@ import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
+/*
+ * Runner file for running both UI and API tests
+ */
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = {"src/test/resources/appfeatures"},

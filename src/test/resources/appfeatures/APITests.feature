@@ -17,7 +17,7 @@ Feature: Feature file for backend tests
     Then Confirm that the following logo URL is present
     And Confirm that the technical_doc Url is present
     And Confirm that the symbol of the currency is ETH
-    And Confirm that the date added is
+    And Confirm that the date added is as expected
     And Confirm that the currency has the mineable tag associate with it
 
   @BackendTests
