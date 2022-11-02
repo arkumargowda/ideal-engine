@@ -31,6 +31,7 @@ public class TagVerificationTest extends APITestPrequisite {
 		for(int i=1;i<10;i++) {			
 			String symbol = j.get("data."+i+".symbol");
 			List<String> tags = j.getList("data."+i+".tags");
+			System.out.println("Tags present with "+symbol+ " are "+ tags);
 			Assert.assertTrue(symbol+" contains miniable tag",tags.contains("mineable"));
 		}
 		
@@ -54,6 +55,7 @@ public class TagVerificationTest extends APITestPrequisite {
 		JsonPath j = new JsonPath(response.asString());
 		for(int i=1;i<10;i++) {			
 			String symbol = j.get("data."+i+".symbol");
+			System.out.println("Symbol for id "+i+" is "+ symbol);
 			Assert.assertTrue(symbol+" is the currect currency returned for id "+i, prop.getProperty(String.valueOf(i)).equals(symbol));
 		}
 	

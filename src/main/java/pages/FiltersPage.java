@@ -26,6 +26,7 @@ public class FiltersPage {
 	public By infoCloseButton = By.xpath("//div[@class='gv-close']");
 	public By closeCookiesPopUp = By.className("cmc-cookie-policy-banner__close");
 	public By nextPageButton = By.xpath("(//a[@aria-label='Next page'])[2]");
+	public By rowsCountDropDown = By.xpath("//div[@id='tippy-1']");
 
 	public FiltersPage(WebDriver driver) {
 		this.driver = driver;

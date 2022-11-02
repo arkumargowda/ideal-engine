@@ -15,9 +15,7 @@ public class APITestPrequisite {
 	 * This returns RequestSpecification with having baseUri and authentication header set
 	 */
 	public RequestSpecification getRequestSpecification() {
-		
 		Properties configProp = new ConfigReader().init_prop();
-		
 		return RestAssured.given()
 				.baseUri("https://pro-api.coinmarketcap.com")
 				.header("X-CMC_PRO_API_KEY",configProp.getProperty("key"));

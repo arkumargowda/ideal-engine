@@ -44,6 +44,8 @@ public class FilterTests {
 	public void user_selects_show_rows_dropdown_to(Integer rowsCount) {
 		ElementUtils.scrollToView(driver, filtersPage.rowsCountFilter);
 		driver.findElement(filtersPage.rowsCountFilter).click();
+		new WebDriverWait(driver, Duration.ofSeconds(10))
+		.until(ExpectedConditions.visibilityOfElementLocated(filtersPage.rowsCountDropDown));
 		driver.findElement(filtersPage.getRowsDropdownOption(rowsCount)).click();
 	}
 	
@@ -116,6 +118,7 @@ public class FilterTests {
 		priceMap.forEach((a, b) -> {
 			float price = Float.parseFloat(b.toString());
 			Assert.assertTrue("Price of " + a + " is within selected price range",price >= 101 && price <= 1000);
+			System.out.println("Price of " + a + " is "+price+" which is between $101-$1000");
 		});
 		
 		
@@ -126,7 +129,7 @@ public class FilterTests {
 			BigInteger min = BigInteger.valueOf(1000000000L);
 			BigInteger max = BigInteger.valueOf(10000000000L);
 			Assert.assertTrue("Market Cap of " + a + " is within selected market Cap range",CompareBigNumers.greaterOrEqual(marketCap, min) && CompareBigNumers.lesserOrEqual(marketCap, max));
-
+			System.out.println("Market Cap of " + a + " is "+marketCap+" which is between $1B-$10B");
 		});
 
 	}
