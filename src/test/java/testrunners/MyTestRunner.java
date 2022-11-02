@@ -17,7 +17,7 @@ import io.cucumber.junit.CucumberOptions;
 	                        "json:target/cucumber.json",
 	                        "html:target/cucumber.html"},
 
-		publish = false
+		publish = true
 		
 		)
 public class MyTestRunner {

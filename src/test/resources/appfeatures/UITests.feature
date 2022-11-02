@@ -3,12 +3,14 @@ Feature: Filters feature on home page
   @UITests
   Scenario Outline: Frontend Task1 - Verify the rows count filter
     Given open the url "https://coinmarketcap.com"
-    When user selects show rows dropdown to value to <count>
+    When user selects show rows dropdown to <count>
     Then <count> rows should be dispalyed
 
     Examples: 
       | count |
       |   100 |
+      |    50 |
+      |    20 |
 
   @UITests
   Scenario: Frontend Task2 - Verify the Market Cap and Price filters

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 /**
  * 
- * This class contains webelements present on the filter page
+ * This class implements Page Object Model for filters page and contains webelements present on the filters page.
  * 
  *
  */

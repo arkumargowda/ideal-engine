@@ -1,7 +1,10 @@
 package stepdefinitions.apiTests;
 
+import java.util.Properties;
+
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
+import utils.ConfigReader;
 
 /*
  * This is a base class for all API tests of https://pro-api.coinmarketcap.com application
@@ -13,9 +16,11 @@ public class APITestPrequisite {
 	 */
 	public RequestSpecification getRequestSpecification() {
 		
+		Properties configProp = new ConfigReader().init_prop();
+		
 		return RestAssured.given()
 				.baseUri("https://pro-api.coinmarketcap.com")
-				.header("X-CMC_PRO_API_KEY","696f7d0e-c3e6-47ac-8135-d3852c39e2fb");
+				.header("X-CMC_PRO_API_KEY",configProp.getProperty("key"));
 		
 	}
 
