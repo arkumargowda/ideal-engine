@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
-import org.testng.Assert;
+
+import org.junit.Assert;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.path.json.JsonPath;
@@ -29,7 +31,7 @@ public class TagVerificationTest extends APITestPrequisite {
 		for(int i=1;i<10;i++) {			
 			String symbol = j.get("data."+i+".symbol");
 			List<String> tags = j.getList("data."+i+".tags");
-			Assert.assertTrue(tags.contains("mineable"), symbol+" contains miniable tag");
+			Assert.assertTrue(symbol+" contains miniable tag",tags.contains("mineable"));
 		}
 		
 	}
@@ -52,7 +54,7 @@ public class TagVerificationTest extends APITestPrequisite {
 		JsonPath j = new JsonPath(response.asString());
 		for(int i=1;i<10;i++) {			
 			String symbol = j.get("data."+i+".symbol");
-			Assert.assertTrue(prop.getProperty(String.valueOf(i)).equals(symbol), symbol+" is the currect currency returned for id "+i);
+			Assert.assertTrue(symbol+" is the currect currency returned for id "+i, prop.getProperty(String.valueOf(i)).equals(symbol));
 		}
 	
 	}

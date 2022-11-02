@@ -5,12 +5,12 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -115,7 +115,7 @@ public class FilterTests {
 		//code for price validation
 		priceMap.forEach((a, b) -> {
 			float price = Float.parseFloat(b.toString());
-			Assert.assertTrue(price >= 101 && price <= 1000, "Price of " + a + " is within selected price range");
+			Assert.assertTrue("Price of " + a + " is within selected price range",price >= 101 && price <= 1000);
 		});
 		
 		
@@ -125,8 +125,7 @@ public class FilterTests {
 			BigInteger marketCap = BigInteger.valueOf(Long.valueOf(b.toString().replaceAll(",", "").toString()));
 			BigInteger min = BigInteger.valueOf(1000000000L);
 			BigInteger max = BigInteger.valueOf(10000000000L);
-			Assert.assertTrue(CompareBigNumers.greaterOrEqual(marketCap, min) && CompareBigNumers.lesserOrEqual(marketCap, max),
-					"Market Cap of " + a + " is within selected market Cap range");
+			Assert.assertTrue("Market Cap of " + a + " is within selected market Cap range",CompareBigNumers.greaterOrEqual(marketCap, min) && CompareBigNumers.lesserOrEqual(marketCap, max));
 
 		});
 
