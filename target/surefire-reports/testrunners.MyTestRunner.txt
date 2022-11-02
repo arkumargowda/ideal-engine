@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: testrunners.MyTestRunner
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 35.34 s - in testrunners.MyTestRunner
+Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 31.933 s <<< FAILURE! - in testrunners.MyTestRunner
+Backend Task2 - Tech doc verification(Feature file for backend tests)  Time elapsed: 1.05 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+JSON path data.1027.tags doesn't match.
+Expected: a collection containing "mineable"
+  Actual: <[pos, smart-contracts, ethereum-ecosystem, coinbase-ventures-portfolio, three-arrows-capital-portfolio, polychain-capital-portfolio, binance-labs-portfolio, blockchain-capital-portfolio, boostvc-portfolio, cms-holdings-portfolio, dcg-portfolio, dragonfly-capital-portfolio, electric-capital-portfolio, fabric-ventures-portfolio, framework-ventures-portfolio, hashkey-capital-portfolio, kenetic-capital-portfolio, huobi-capital-portfolio, alameda-research-portfolio, a16z-portfolio, 1confirmation-portfolio, winklevoss-capital-portfolio, usv-portfolio, placeholder-ventures-portfolio, pantera-capital-portfolio, multicoin-capital-portfolio, paradigm-portfolio, injective-ecosystem]>
+
+

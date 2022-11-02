@@ -1,3 +1,4 @@
+utils/ElementUtils.class
 utils/ConfigReader.class
 pages/FiltersPage.class
 utils/CompareBigNumers.class
