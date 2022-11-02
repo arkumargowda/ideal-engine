@@ -9,8 +9,6 @@ Feature: Filters feature on home page
     Examples: 
       | count |
       |   100 |
-      |    50 |
-      |    20 |
 
   @UITests
   Scenario: Frontend Task2 - Verify the Market Cap and Price filters
