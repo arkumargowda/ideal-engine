@@ -24,7 +24,7 @@ public class ApplicationHooks {
 	 * This hook will initialize the driver based on the browser mentioned in the config properties file
 	 */
 	@Before("@UITests")
-	public void getProperty() {
+	public void getBrowser() {
 		configReader = new ConfigReader();
 		prop = configReader.init_prop();
 		String browserName = prop.getProperty("browser");

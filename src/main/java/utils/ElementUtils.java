@@ -15,7 +15,7 @@ public class ElementUtils {
 
 	/**
 	 * @
-	 * @apiNote This method used to scroll to element
+	 * @apiNote This method is used to scroll to element
 	 * @param driver
 	 * @param locator
 	 */

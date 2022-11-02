@@ -16,8 +16,8 @@ public class TechDocTest extends APITestPrequisite {
 		.get("/v2/cryptocurrency/info").then();
 	}
 
-	@Then("Confirm that the following logo URL is present")
-	public void confirm_that_the_following_logo_url_is_present() {
+	@Then("Confirm that the logo URL is present")
+	public void confirm_that_the_logo_url_is_present() {
 		response.assertThat().body("data.1027.logo", Matchers.is("https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"));
 	}
 

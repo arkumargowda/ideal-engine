@@ -71,13 +71,14 @@ public class FilterTests {
 	public void filter_records_by_market_cap_$1b_$10b_and_price_$_$(Integer int1, Integer int2) {
 		driver.findElement(filtersPage.addFilter).click();
 		
+		//apply marketCap filter
 		driver.findElement(filtersPage.marketCapButton).click();
 		driver.findElement(filtersPage.oneBToTenBButton).click();
 		ElementUtils.scrollToView(driver, filtersPage.applyFilterButton);
 		driver.findElement(filtersPage.applyFilterButton).click();
 		ElementUtils.waitForProgressBarToComplete(driver);
 
-		
+		//apply price filter
 		ElementUtils.scrollToView(driver, filtersPage.priceButton);
 		driver.findElement(filtersPage.priceButton).click();
 		driver.findElement(filtersPage.priceValButton).click();
@@ -99,6 +100,7 @@ public class FilterTests {
 		while (driver.findElement(filtersPage.nextPageButton).getAttribute("aria-disabled").equals("false")) {
 			ElementUtils.scrollToView(driver, filtersPage.nextPageButton);
 			driver.findElement(filtersPage.nextPageButton).click();
+			ElementUtils.waitForProgressBarToComplete(driver);
 			rows.addAll(driver.findElements(filtersPage.rowsDisplayed));
 		}
 

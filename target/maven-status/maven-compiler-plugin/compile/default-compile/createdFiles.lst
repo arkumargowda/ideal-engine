@@ -1,5 +1,4 @@
 utils/ConfigReader.class
 pages/FiltersPage.class
-utils/JSUtils.class
 utils/CompareBigNumers.class
 factory/DriverFactory.class

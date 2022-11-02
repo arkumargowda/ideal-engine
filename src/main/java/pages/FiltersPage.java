@@ -35,7 +35,7 @@ public class FiltersPage {
 	/**
 	 * 
 	 * @param count
-	 * @return return the dropdown option having value 'count' as webelement
+	 * @return returns the dropdown option having value 'count' as webelement
 	 */
 	public By getRowsDropdownOption(int count) {
 		return By.xpath("//button[contains(text(),'" + count + "')]");
