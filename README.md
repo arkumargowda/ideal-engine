@@ -17,9 +17,16 @@ Project for UI and API automated tests developed using Selenium, RestAssured and
 * Type the command ``` mvn clean test ``` and hit enter.
 
 ## Reports
-Link to test execution report can be found in the logs at the end. Copy the link to any browser to view the report.
+Link to test execution report can be found in the logs at the end as below. Copy the link to any browser to view the report.
 
-## <span color="red">Note</span>:
+```
+View your Cucumber Report at:                                            
+https://reports.cucumber.io/reports/b90c5023-b29a-4ee3-bf1f-6581c460294c
+ 
+ ```
+
+
+## Note
 ```diff 
 -Technical doc validation test will fail as 'minimal' tag is not present in the response.
 ```
